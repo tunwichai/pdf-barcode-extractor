@@ -81,12 +81,13 @@ def extract_barcodes_from_pdf(pdf_file):
 def clean_barcode(barcode):
     """Clean and validate barcode format"""
     # Remove prefix URLs and any unwanted characters
-    cleaned = re.sub(r'^https.*webproofgo', '', barcode)
+    cleaned = re.sub(r'httpsapiflashexpresscomwebproofgo', '', barcode, flags=re.IGNORECASE)
     cleaned = re.sub(r'[^A-Za-z0-9]', '', cleaned)
     
     # Check if the barcode follows expected patterns (AYUxxxxxxx or PHTxxxxxxx)
-    if re.match(r'^(AYU|PHT)[A-Z0-9]{7,}$', cleaned):
-        return cleaned
+    cleaned_upper = cleaned.upper()
+    if re.match(r'^(AYU|PHT)[A-Z0-9]{7,}$', cleaned_upper):
+        return cleaned_upper
 
     return None  # Invalid barcode
 
