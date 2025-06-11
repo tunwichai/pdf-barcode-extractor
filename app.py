@@ -86,7 +86,7 @@ def clean_barcode(barcode):
     
     # Check if the barcode follows expected patterns (AYUxxxxxxx or PHTxxxxxxx)
     cleaned_upper = cleaned.upper()
-    if re.match(r'^(AYU|PHT|RAT)[A-Z0-9]{7,}$', cleaned_upper):
+    if re.match(r'^(AYU|UTP|SAM|LOP|PHS|PEC|LAM|SRA|PRA|UTT|SAR|NAP|SAK|SUP|BFV|NON|SUR|LPT|CNX|KKC|NAS|BKK|UBP|SNO|SAS|NAK|CEI|MTP|UTD|HGN|SIS|PRK|PHT|ANG|CHA|CHP|KAN|PET|RAT)[A-Z0-9]{7,}$', cleaned_upper):
         return cleaned_upper
 
     return None  # Invalid barcode
